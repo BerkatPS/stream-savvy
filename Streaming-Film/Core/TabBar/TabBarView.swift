@@ -8,61 +8,43 @@
 import SwiftUI
 
 struct TabBarView: View  {
+    let buttons: [(systemName: String, label: String)]
+    let action: (String) -> Void
+    
+//    house.fill,Home
+//    movieclapper,Movies
+//    film,Series
+//    music.note.tv,Series
     var body: some View {
-        ScrollView {
-            VStack {
-                // Header Section
-                GeometryReader { geometry in
-                    Color.blue
-                        .frame(width: geometry.size.width, height: 200) // Menggunakan lebar layar untuk membuat background full width
-                        .overlay(
-                            VStack {
-                                Text("Selamat Datang di FilmFlix")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                Text("Temukan Berbagai Film Terbaru")
-                                    .font(.title)
-                                    .foregroundColor(.white)
-                            }
-                        )
-                }
-                
-                // Feature Section
-                VStack {
-                    Text("Fitur Utama")
-                        .font(.title)
-                        .foregroundColor(.black)
-                        .padding()
-                    // Isi fitur utama di sini
-                }
-                .background(Color.gray.opacity(0.2))
-                
-                // Testimonial Section
-                VStack {
-                    Text("Testimonial")
-                        .font(.title)
-                        .foregroundColor(.black)
-                        .padding()
-                    // Isi testimonial di sini
-                }
-                .background(Color.gray.opacity(0.2))
-                
-                // Footer Section
-                GeometryReader { geometry in
-                    Color.black
-                        .frame(width: geometry.size.width, height: 100) // Menggunakan lebar layar untuk membuat background full width
-                        .overlay(
-                            Text("FilmFlix © 2024")
-                                .font(.title)
+        ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 30) {
+                        ForEach(buttons, id: \.systemName) { button in
+                            Button(action: {
+                                self.action(button.label)
+                            }) {
+                                HStack {
+                                    Image(systemName: button.systemName)
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                    Text(button.label)
+                                        .font(.callout)
+                                        .fontWeight(.semibold)
+                                }
                                 .foregroundColor(.white)
-                        )
+                            }
+                        }
+                    }
+                    .padding(.vertical)
                 }
-            }
-        }
+
+
     }
 }
 
 #Preview {
-    TabBarView()
+    TabBarView(buttons: [
+        (systemName: "house.fill", label: "Home"),
+    ]) {label in
+        
+    }
 }

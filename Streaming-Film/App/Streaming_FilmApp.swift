@@ -11,7 +11,7 @@ import SwiftUI
 struct Streaming_FilmApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ExploreView()
         }
     }
 }
