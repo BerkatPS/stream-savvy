@@ -7,44 +7,51 @@
 
 import SwiftUI
 
-struct TabBarView: View  {
+struct TabBarView: View {
     let buttons: [(systemName: String, label: String)]
-    let action: (String) -> Void
+    let navigationAction: (String) -> Void
     
-//    house.fill,Home
-//    movieclapper,Movies
-//    film,Series
-//    music.note.tv,Series
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 30) {
-                        ForEach(buttons, id: \.systemName) { button in
-                            Button(action: {
-                                self.action(button.label)
-                            }) {
-                                HStack {
-                                    Image(systemName: button.systemName)
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
-                                    Text(button.label)
-                                        .font(.callout)
-                                        .fontWeight(.semibold)
-                                }
-                                .foregroundColor(.white)
-                            }
+            HStack(spacing: 30) {
+                ForEach(buttons, id: \.systemName) { button in
+                    NavigationLink(destination: destinationForTab(label: button.label)) {
+                        HStack {
+                            Image(systemName: button.systemName)
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                            Text(button.label)
+                                .font(.callout)
+                                .fontWeight(.semibold)
                         }
+                        .foregroundColor(.white)
                     }
-                    .padding(.vertical)
                 }
-
-
+            }
+            .padding(.vertical)
+        }
+    }
+    
+    // Fungsi untuk menentukan tujuan halaman berdasarkan label tombol
+    private func destinationForTab(label: String) -> some View {
+        switch label {
+        case "Home":
+            return AnyView(ExploreView())
+        case "Movies":
+            return AnyView(MoviesUiView())
+        case "Series":
+            return AnyView(SeriesUIView())
+        default:
+            return AnyView(ExploreView())
+        }
     }
 }
 
 #Preview {
     TabBarView(buttons: [
         (systemName: "house.fill", label: "Home"),
-    ]) {label in
+    ], navigationAction: {_ in 
         
-    }
+    })
 }
+
