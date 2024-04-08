@@ -130,7 +130,6 @@ struct LoginFormView: View {
             }
         }
         .navigationBarHidden(true)
-        
     }
 }
 
