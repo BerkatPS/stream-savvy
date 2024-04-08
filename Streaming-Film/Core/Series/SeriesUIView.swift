@@ -46,6 +46,7 @@ struct SeriesUIView: View {
                         TabBarView(buttons: [
                             (systemName: "house.fill", label: "Home"),
                             (systemName: "movieclapper.fill", label: "Movies"),
+                            (systemName: "chart.line.uptrend.xyaxis", label: "Trending"),
                             (systemName: "film", label: "Series"),
                             (systemName: "music.note.tv", label: "Tv Show")
                         ], navigationAction: { label in
@@ -187,7 +188,7 @@ struct SeriesUIView: View {
                     
                     // Tab Related Series
                     
-                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 40), GridItem(.flexible(), spacing: 50)]) {
+                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 35), GridItem(.flexible(), spacing: 50)]) {
                         VStack {
                             TabRelatedFilmSeriesView(tabLabel: "Episodes", colorTab: Color("primaryColor")) {
                                 
@@ -216,10 +217,11 @@ struct SeriesUIView: View {
                     // Seasons and Episodes
                     VStack(alignment: .leading) {
                         Text("Seasons and Episodes")
+                            .padding()
                             .font(.headline)
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 5)
                         
-                        LazyVGrid(columns: [GridItem(.flexible())], spacing: 20) {
+                        LazyVGrid(columns: [GridItem(.flexible())]) {
                             HStack(spacing: 20) {
                                 Text("1")
                                     .font(.title)
@@ -256,7 +258,7 @@ struct SeriesUIView: View {
                                         .foregroundStyle(Color.gray.opacity(0.6))
                                 }
                             }
-                            .padding(.horizontal,5)
+                            
                             HStack(spacing: 20) {
                                 Image("Thumbnail-populer")
                                     .resizable()
@@ -389,30 +391,82 @@ struct SeriesUIView: View {
                                         .foregroundStyle(Color.gray.opacity(0.6))
                                 }
                             }
+                            HStack(spacing: 5) {
+                                Button{
+                                    
+                                }label: {
+                                    Image(systemName: "arrowtriangle.left")
+                                        .frame(width: 30, height: 30)
+                                        .background(Color.gray.opacity(0.3))
+
+                                }
+                                     
+                                Button{
+                                    
+                                }label: {
+                                    Text("1")
+                                        .frame(width: 30, height: 30)
+                                        .background(Color.gray.opacity(0.3))
+
+                                }
+                                           
+                                Button{
+                                    
+                                }label: {
+                                    Text("2")
+                                        .frame(width: 30, height: 30)
+                                        .background(Color("primaryColor"))
+
+                                }
+                                    
+                                Button{
+                                    
+                                }label: {
+                                    Text("3")
+                                        .frame(width: 30, height: 30)
+                                        .background(Color.gray.opacity(0.3))
+                                }
+                                
+                                Button{
+                                    
+                                }label: {
+                                    Text("4")
+                                        .frame(width: 30, height: 30)
+                                        .background(Color.gray.opacity(0.3))
+
+                                }
+                                       
+                                Button{
+                                    
+                                }label: {
+                                    Image(systemName: "arrowtriangle.right")
+                                        .frame(width: 30, height: 30)
+                                        .background(Color.gray.opacity(0.3))
+                                }
+                            }
+
+                            .padding(.vertical, 20)
                         }
                         .padding(.top , 30)
                     }
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                    .padding(.horizontal, 20)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.gray.opacity(0.2))
                     .padding(.top, 20)
                     .foregroundColor(.white)
                     
-                    Spacer()
-                    
-                    Rectangle()
-                        .frame(width: 350, height: 1)
-                        .foregroundColor(Color.gray.opacity(0.5))
-                        .padding(.top, 20)
                     // Description Film
                     VStack{
                         Text("Description")
                             .font(.title3)
+                            .padding(.vertical)
                         
                         VStack{
                             Text("The Death is Real immerses viewers in a poignant exploration of life's most inevitable journey: death. Through riveting storytelling and compelling characters, the film navigates the intricate web of emotions, decisions, and reflections that accompany the end of life. With masterful direction and evocative cinematography, audiences are drawn into a thought-provoking journey that challenges perceptions and offers profound insights into the human experience\n\n")
                                 .padding(.vertical)
                         }
+                        .padding(.horizontal)
                     }
+                    .background(Color.gray.opacity(0.2))
                     .padding(.top, 50)
                     .foregroundColor(.white)
                     

@@ -39,6 +39,8 @@ struct TabBarView: View {
             return AnyView(ExploreView())
         case "Movies":
             return AnyView(MoviesUiView())
+        case "Trending":
+            return AnyView(TrendingFilmView())
         case "Series":
             return AnyView(SeriesUIView())
         default:

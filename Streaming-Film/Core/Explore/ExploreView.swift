@@ -39,6 +39,7 @@ struct ExploreView: View {
                         TabBarView(buttons: [
                             (systemName: "house.fill", label: "Home"),
                             (systemName: "movieclapper.fill", label: "Movies"),
+                            (systemName: "chart.line.uptrend.xyaxis", label: "Trending"),
                             (systemName: "film", label: "Series"),
                             (systemName: "music.note.tv", label: "Tv Show")
                         ], navigationAction: { label in
